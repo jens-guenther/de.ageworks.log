@@ -1,5 +1,27 @@
 package de.ageworks.splunk;
 
+/**
+ * @copyright
+ *
+ * Copyright 2017-2018 age works GmbH.
+ * 
+ * This class is a derivation of 
+ * https://github.com/splunk/splunk-library-javalogging/blob/1.5.2/src/main/java/com/splunk/logging/HttpEventCollectorLogbackAppender.java
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"): you may
+ * not use this file except in compliance with the License. You may obtain
+ * a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations
+ * under the License.
+ */
+
+
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Collections;
@@ -41,7 +63,11 @@ import ch.qos.logback.core.Layout;
 import ch.qos.logback.core.spi.DeferredProcessingAware;
 
 /**
- * Logback Appender which writes its events to Splunk http event collector rest endpoint.
+ * Logback Appender which writes its events to Splunk http event collector rest endpoint. </br>
+ * </br>
+ * This class is a derivation of</br>
+ * https://github.com/splunk/splunk-library-javalogging/blob/1.5.2/src/main/java/com/splunk/logging/HttpEventCollectorLogbackAppender.java</br>
+ * in that it was adopted to work in conjunction with @link {@link HttpFlatEventCollectorSender}.
  */
 public class HttpFlatEventCollectorLogbackAppender extends AppenderBase<Object> {
     private HttpFlatEventCollectorSender sender = null;

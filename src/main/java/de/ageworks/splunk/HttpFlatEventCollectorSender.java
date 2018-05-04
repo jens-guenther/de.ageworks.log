@@ -1,5 +1,27 @@
 package de.ageworks.splunk;
 
+/**
+ * @copyright
+ *
+ * Copyright 2017-2018 age works GmbH.
+ * 
+ * This class is a derivation of 
+ * https://github.com/splunk/splunk-library-javalogging/blob/1.5.2/src/main/java/com/splunk/logging/HttpEventCollectorSender.java
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"): you may
+ * not use this file except in compliance with the License. You may obtain
+ * a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations
+ * under the License.
+ */
+
+
 import com.splunk.logging.HttpEventCollectorErrorHandler;
 import com.splunk.logging.HttpEventCollectorEventInfo;
 
@@ -53,14 +75,12 @@ import java.util.Map;
 import java.util.Locale;
 
 /**
- * code copied from https://github.com/splunk/splunk-library-javalogging
- * 
- * and adjusted
- */
-
-
-/**
- * This is an internal helper class that sends logging events to Splunk http event collector.
+ * This is an internal helper class that sends logging events to Splunk http event collector. </br>
+ * </br>
+ * This class is a derivation of</br>
+ * https://github.com/splunk/splunk-library-javalogging/blob/1.5.2/src/main/java/com/splunk/logging/HttpEventCollectorSender.java</br>
+ * in that it sends the event as string, not as structured object. Also, the properties map of the used event info
+ * object is ignored.
  */
 final class HttpFlatEventCollectorSender extends TimerTask implements HttpEventCollectorMiddleware.IHttpSender {
     public static final String MetadataTimeTag = "time";
@@ -237,8 +257,9 @@ final class HttpFlatEventCollectorSender extends TimerTask implements HttpEventC
         putIfPresent(event, MetadataIndexTag, metadata.get(MetadataIndexTag));
         putIfPresent(event, MetadataSourceTag, metadata.get(MetadataSourceTag));
         putIfPresent(event, MetadataSourceTypeTag, metadata.get(MetadataSourceTypeTag));
+        
         // event body
-//original implementation
+        // original implementation -->
 //        JSONObject body = new JSONObject();
 //        putIfPresent(body, "severity", eventInfo.getSeverity());
 //        putIfPresent(body, "message", eventInfo.getMessage());
@@ -262,8 +283,10 @@ final class HttpFlatEventCollectorSender extends TimerTask implements HttpEventC
 //        }
 //        // join event and body
 //        event.put("event", body);
-//replacement implementation
+        // <-- replacement implementation -->
         event.put("event", eventInfo.getMessage());
+        // <-- end replacement
+        
         return event.toString();
     }
 
