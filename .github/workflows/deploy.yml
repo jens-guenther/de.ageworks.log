@@ -27,10 +27,10 @@ jobs:
            distribution: zulu
            java-version: 15
            gpg-private-key: ${{ secrets.gpg_private_key }}
-           gpg-passphrase: ${{ secrets.gpg_passphrase }}
+           gpg-passphrase: MAVEN_GPG_PASSPHRASE
            server-id: ossrh
-           server-username: ${{ secrets.nexus_username }}
-           server-password: ${{ secrets.nexus_password }}
+           server-username: MAVEN_USERNAME
+           server-password: MAVEN_CENTRAL_TOKEN
            
       - name: Build and Test
         run: mvn -B clean test
@@ -40,7 +40,11 @@ jobs:
       
       - name: Deploy to oss.sonatype.org
         run: mvn -B deploy --activate-profiles deploy
-      
+        env:
+           MAVEN_USERNAME: ${{ secrets.nexus_username }}
+           MAVEN_CENTRAL_TOKEN: ${{ secrets.nexus_password }}
+           MAVEN_GPG_PASSPHRASE: ${{ secrets.gpg_passphrase }}
+           
 #      - name: Release Maven package
 #        uses: samuelmeuli/action-maven-publish@v1
 #        with:
