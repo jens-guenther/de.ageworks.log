@@ -24,15 +24,22 @@ jobs:
       - name: Install Java and Maven
         uses: actions/setup-java@v2
         with:
-          distribution: zulu
-          java-version: 15
-
+           distribution: zulu
+           java-version: 15
+           gpg-private-key: ${{ secrets.gpg_private_key }}
+           gpg-passphrase: ${{ secrets.gpg_passphrase }}
+           server-id: ossrh
+           server-username: ${{ secrets.nexus_username }}
+           server-password: ${{ secrets.nexus_password }}
+           
       - name: Build and Test
         run: mvn -B clean test
       
       - name: Package
         run: mvn -B package --activate-profiles deploy
-        
+      
+      - name: Deploy to oss.sonatype.org
+      
 #      - name: Release Maven package
 #        uses: samuelmeuli/action-maven-publish@v1
 #        with:
