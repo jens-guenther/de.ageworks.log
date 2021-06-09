@@ -238,7 +238,7 @@ public class LogMessageBuilder {
 	/**
 	 * Forwards to {@code setException(e, true)}
 	 * 
-	 * @param
+	 * @param e
 	 * 	the exception to be logged
 	 * 
 	 * @return this
@@ -250,7 +250,7 @@ public class LogMessageBuilder {
 	/**
 	 * Forwards to {@code setException(e, false)}
 	 * 
-	 * @param
+	 * @param e
 	 * 	the exception to be logged
 	 * 
 	 * @return this
