@@ -89,6 +89,9 @@ public class LogMessageBuilder {
 	 * </ul>
 	 * already set.
 	 * 
+	 * @return
+	 * 	a new LogMessageBuilder
+	 * 
 	 * @see #withOpsLogComponent(String)
 	 * @see #withOpsLogProcess(String)
 	 */
@@ -148,7 +151,7 @@ public class LogMessageBuilder {
 	 * 	the key to be logged
 	 * 
 	 * @param value
-	 * 	the value to be logged</br>
+	 * 	<p>the value to be logged</p>
 	 *  If value is {@code null} then {@code ${key}="null"} will be logged.
 	 * 
 	 * @return this
@@ -165,7 +168,7 @@ public class LogMessageBuilder {
 	 * 	the key to be logged
 	 * 
 	 * @param number
-	 * 	the value to be logged</br>
+	 * 	<p>the value to be logged</p>
 	 *  If number is {@code null} then {@code ${key}="null"} will be logged.
 	 * 
 	 * @return this
@@ -178,6 +181,12 @@ public class LogMessageBuilder {
 	/**
 	 * Forwards to {@link #add(String, LocalDateTime)}.
 	 * 
+	 * @param key
+	 * 	the key to be logged
+	 * 
+	 * @param date
+	 *  the date to be logged
+	 *  
 	 * @return this
 	 * 
 	 * @see #add(String, LocalDateTime)
@@ -229,6 +238,9 @@ public class LogMessageBuilder {
 	/**
 	 * Forwards to {@code setException(e, true)}
 	 * 
+	 * @param
+	 * 	the exception to be logged
+	 * 
 	 * @return this
 	 */
 	public LogMessageBuilder setException(Exception e) {
@@ -237,6 +249,9 @@ public class LogMessageBuilder {
 
 	/**
 	 * Forwards to {@code setException(e, false)}
+	 * 
+	 * @param
+	 * 	the exception to be logged
 	 * 
 	 * @return this
 	 */
