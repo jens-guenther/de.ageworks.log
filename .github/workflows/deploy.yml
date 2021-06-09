@@ -20,10 +20,10 @@ jobs:
           java-version: 15
 
       - name: Build and Test
-        run: mvn clean test
+        run: mvn -B clean test
       
       - name: Package
-        run: mvn package --activate-profiles deploy
+        run: mvn -B package --activate-profiles deploy
         
 #      - name: Release Maven package
 #        uses: samuelmeuli/action-maven-publish@v1

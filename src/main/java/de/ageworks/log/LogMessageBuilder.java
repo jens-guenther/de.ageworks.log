@@ -28,9 +28,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Builds log strings following a key=value format and removes the need for specifying a logger.</br>
- * </br>
- * <b>Example</b>
+ * <p>Builds log strings following a key=value format and removes the need for specifying a logger.</p>
+ * <p><b>Example</b></p>
  * <pre>
  * class Foo {
  *   
@@ -78,12 +77,12 @@ public class LogMessageBuilder {
 	}
 	
 	private static Logger getLogger() {
-		Logger logger = LoggerFactory.getLogger(getCallingClass());
+		var logger = LoggerFactory.getLogger(getCallingClass());
 		return (logger == null)? LOG : logger;
 	}
 
 	/**
-	 * Creates a new LogMessageBuilder having the fields</br>
+	 * Creates a new LogMessageBuilder having the fields
 	 * <ul>
 	 *   <li>p=${classNameOfTheLoggingMethod}</li>
 	 *   <li>c=${methodNameOfTheLoggingMethod}</li>
@@ -94,10 +93,10 @@ public class LogMessageBuilder {
 	 * @see #withOpsLogProcess(String)
 	 */
 	public static LogMessageBuilder opsLogMessage() {
-		StackTraceElement ste = Thread.currentThread().getStackTrace()[2];
-		String className = getCallingClass().getName();
-		String component = className.substring(className.lastIndexOf('.') + 1);
-		String process = ste.getMethodName();
+		var ste = Thread.currentThread().getStackTrace()[2];
+		var className = getCallingClass().getName();
+		var component = className.substring(className.lastIndexOf('.') + 1);
+		var process = ste.getMethodName();
 
 		return new LogMessageBuilder()
 				.withOpsLogComponent(component)
@@ -115,7 +114,7 @@ public class LogMessageBuilder {
 	}
 	
 	/**
-	 * Sets the log component which defaults to the method calling this LogMessageBuilder.</br>
+	 * <p>Sets the log component which defaults to the method calling this LogMessageBuilder.</p>
 	 * Will appear as {@code c="${component}"} at the log.
 	 *  
 	 * @param component
@@ -129,7 +128,7 @@ public class LogMessageBuilder {
 	}
 
 	/**
-	 * Sets the log process which defaults to the class calling this LogMessageBuilder.</br>
+	 * <p>Sets the log process which defaults to the class calling this LogMessageBuilder.</p>
 	 * Will appear as {@code p="${process}"} at the log.
 	 *  
 	 * @param process
@@ -143,7 +142,7 @@ public class LogMessageBuilder {
 	}
 
 	/**
-	 * Adds a {@code ${key}="${value.toString()}"} part to be logged.</br>
+	 * Adds a {@code ${key}="${value.toString()}"} part to be logged.
 	 *
 	 * @param key
 	 * 	the key to be logged
@@ -160,7 +159,7 @@ public class LogMessageBuilder {
 	}
 
 	/**
-	 * Adds a {@code ${key}=${number}} part to be logged.</br>
+	 * Adds a {@code ${key}=${number}} part to be logged.
 	 *
 	 * @param key
 	 * 	the key to be logged
@@ -189,8 +188,8 @@ public class LogMessageBuilder {
 
 	
 	/**
-	 * Adds a {@code ${key}="${dateTime}"} part to be logged.</br>
-	 * </br>
+	 * <p>Adds a {@code ${key}="${dateTime}"} part to be logged.</p>
+	 * 
 	 * The {@code dateTime} will be formated to
 	 * <pre>
 	 * yyyy-MM-dd HH:mm:ss,SSSZ
@@ -200,7 +199,7 @@ public class LogMessageBuilder {
 	 * 	the key to be logged
 	 * 
 	 * @param dateTime
-	 * 	the dateTime to be logged</br>
+	 * 	<p>the dateTime to be logged</p>
 	 *  If dateTime is {@code null} then {@code ${key}="null"} will be logged.
 	 * 
 	 * @return this
@@ -211,13 +210,13 @@ public class LogMessageBuilder {
 	}
 
 	/**
-	 * Adds a {@code ${key}=${value.toString()}} part to be logged. Note the absence of the surrounding ".</br>
+	 * Adds a {@code ${key}=${value.toString()}} part to be logged. Note the absence of the surrounding ".
 	 *
 	 * @param key
 	 * 	the key to be logged
 	 * 
 	 * @param value
-	 * 	the value to be logged</br>
+	 * 	<p>the value to be logged</p>
 	 *  If value is {@code null} then {@code ${key}="null"} will be logged.
 	 * 
 	 * @return this
@@ -246,7 +245,7 @@ public class LogMessageBuilder {
 	}
 
 	/**
-	 * Sets the exception to be logged. </br>
+	 * <p>Sets the exception to be logged. </p>
 	 * An exception will be logged as
 	 * <pre>
 	 * exc="${e.getClass().getName()}" excmsg="${e.getMessage()}"
@@ -291,7 +290,7 @@ public class LogMessageBuilder {
 	 * @return this
 	 */
 	public LogMessageBuilder trace() {
-		Logger logger = getLogger();
+		var logger = getLogger();
 		if(logger.isTraceEnabled()) {
 			logger.trace(toLineBrokenStringInCaseOfExc(), exc);
 		}
@@ -305,7 +304,7 @@ public class LogMessageBuilder {
 	 * @return this
 	 */
 	public LogMessageBuilder debug() {
-		Logger logger = getLogger();
+		var logger = getLogger();
 		if(logger.isDebugEnabled()) {
 			logger.debug(toLineBrokenStringInCaseOfExc(), exc);
 		}
@@ -319,7 +318,7 @@ public class LogMessageBuilder {
 	 * @return this
 	 */
 	public LogMessageBuilder info() {
-		Logger logger = getLogger();
+		var logger = getLogger();
 		if(logger.isInfoEnabled()) {
 			logger.info(toLineBrokenStringInCaseOfExc(), exc);
 		}
@@ -333,7 +332,7 @@ public class LogMessageBuilder {
 	 * @return this
 	 */
 	public LogMessageBuilder warn() {
-		Logger logger = getLogger();
+		var logger = getLogger();
 		if(logger.isWarnEnabled()) {
 			logger.warn(toLineBrokenStringInCaseOfExc(), exc);
 		}
@@ -347,7 +346,7 @@ public class LogMessageBuilder {
 	 * @return this
 	 */
 	public LogMessageBuilder error() {
-		Logger logger = getLogger();
+		var logger = getLogger();
 		if(logger.isErrorEnabled()) {
 			logger.error(toLineBrokenStringInCaseOfExc(), exc);
 		}
@@ -363,8 +362,8 @@ public class LogMessageBuilder {
 	 * @return the log message as currently being set up
 	 */
 	public String toString() {
-		final StringBuilder builder = new StringBuilder();
-		boolean first = true;
+		final var builder = new StringBuilder();
+		var first = true;
 		for (Map.Entry<String, Object> entry : objects.entrySet()) {
 			if (entry.getValue() != null) {
 				if (!first) {
@@ -374,7 +373,7 @@ public class LogMessageBuilder {
 				}
 				
 	            // Escape any " that appear in the key or value.
-	            String key = entry.getKey().replaceAll("\"", "\\\\\"");
+	            String key = entry.getKey().replace("\"", "\\\\\"");
 	            Object value = entry.getValue();
 
 				builder.append(key).append('=');
@@ -383,7 +382,7 @@ public class LogMessageBuilder {
 				final boolean isString = (value instanceof String);
 				if (isString) {
 					builder.append(QUOTE_CHAR);
-		            value = value.toString().replaceAll("\"", "\\\\\"");
+		            value = value.toString().replace("\"", "\\\\\"");
 				}
 
 				builder.append(value);
