@@ -1,13 +1,13 @@
 name: Deploy Snapshot
 
-# Run workflow on commits to the `master` branch
+# Run workflow on commits to the `deploy` tag
 on:
   push:
-    branches:
-      - master
+    tags:
+      - deploy
 
 jobs:
-  deploy:
+  deploy-snapshot:
     runs-on: ubuntu-18.04
     steps:
       - name: Check out Git repository
@@ -44,16 +44,3 @@ jobs:
            MAVEN_USERNAME: ${{ secrets.nexus_username }}
            MAVEN_CENTRAL_TOKEN: ${{ secrets.nexus_password }}
            MAVEN_GPG_PASSPHRASE: ${{ secrets.gpg_passphrase }}
-           
-#      - name: Release Maven package
-#        uses: samuelmeuli/action-maven-publish@v1
-#        with:
-#          gpg_private_key: ${{ secrets.gpg_private_key }}
-#          gpg_passphrase: ${{ secrets.gpg_passphrase }}
-#          maven_profiles: deploy
-#          maven_goals_phases: clean deploy
-#          maven_args: 
-#          nexus_username: ${{ secrets.nexus_username }}
-#          nexus_password: ${{ secrets.nexus_password }}
-#          server_id: ossrh
-          
