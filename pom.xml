@@ -6,7 +6,7 @@
 	<name>${project.groupId}.${project.artifactId}-${project.version}</name>
 	<packaging>jar</packaging>
 
-	<version>0.2-SNAPSHOT</version>
+	<version>0.2</version>
 
 	<description>Small utility class to streamline logging.</description>
 	<url>https://github.com/jens-guenther/de.ageworks.log</url>
@@ -241,7 +241,7 @@
 		<connection>scm:git:git://github.com/jens-guenther/de.ageworks.log.git</connection>
 		<developerConnection>scm:git:ssh://github.com/jens-guenther/de.ageworks.log.git</developerConnection>
 		<url>https://github.com/jens-guenther/de.ageworks.log/tree/master</url>
-	  <tag>release.0.2</tag>
+	  <tag>log-0.2</tag>
   </scm>
 
 	<distributionManagement>
