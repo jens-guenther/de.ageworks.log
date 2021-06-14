@@ -170,6 +170,12 @@
 					</archive>
 				</configuration>
 			</plugin>
+			<plugin>
+				<artifactId>maven-release-plugin</artifactId>
+				<configuration>
+					<serverId>github</serverId>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
