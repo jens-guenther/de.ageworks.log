@@ -243,10 +243,10 @@
 									<goal>sign</goal>
 								</goals>
 								<configuration>
-									<keyname>de.ageworks</keyname>
-									<passphraseServerId>de.ageworks</passphraseServerId>
 									<!-- Prevent `gpg` from using pinentry programs -->
 									<gpgArguments>
+									    <arg>--local-user</arg>
+									    <arg>de.ageworks</arg>
 										<arg>--pinentry-mode</arg>
 										<arg>loopback</arg>
 									</gpgArguments>
