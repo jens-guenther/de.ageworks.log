@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>de.ageworks</groupId>
@@ -241,10 +243,10 @@
 									<goal>sign</goal>
 								</goals>
 								<configuration>
+									<keyname>de.ageworks</keyname>
+									<passphraseServerId>de.ageworks</passphraseServerId>
 									<!-- Prevent `gpg` from using pinentry programs -->
 									<gpgArguments>
-										<keyname>de.ageworks</keyname>
-										<passphraseServerId>de.ageworks</passphraseServerId>
 										<arg>--pinentry-mode</arg>
 										<arg>loopback</arg>
 									</gpgArguments>
